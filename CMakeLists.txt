@@ -1,0 +1,2 @@
+project(StuScoreManageSystem)
+add_executable(StuScoreManageSystem main.c StuScoreManageSystem.c)

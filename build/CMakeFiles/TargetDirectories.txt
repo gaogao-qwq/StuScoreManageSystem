@@ -1,0 +1,3 @@
+F:/学业/cProgramming/StuScoreManageSystem/build/CMakeFiles/StuScoreManageSystem.dir
+F:/学业/cProgramming/StuScoreManageSystem/build/CMakeFiles/edit_cache.dir
+F:/学业/cProgramming/StuScoreManageSystem/build/CMakeFiles/rebuild_cache.dir
