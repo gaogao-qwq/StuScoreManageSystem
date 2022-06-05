@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<string.h>
-#include<math.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 #include <malloc.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -24,8 +24,20 @@ typedef struct Student
 //欢迎语界面函数
 void Welcome();
 
-//菜单函数
-int Menu();
+//主菜单函数
+int MainMenu();
+
+//编辑成绩表二级菜单函数
+void EditMenu(STU *head, int stuNum, int courseNum);
+
+//成绩表排序二级菜单函数
+void SortMenu(STU *head, int stuNum, int courseNum);
+
+//查询学生成绩二级菜单函数
+void SearchMenu(STU *head, int stuNum, int courseNum);
+
+//打印学生成绩二级菜单函数
+void PrintMenu(STU *head, int stuNum, int courseNum);
 
 //创建链表并录入信息函数
 STU *Create(int n, int m);

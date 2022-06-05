@@ -15,7 +15,7 @@ void Welcome()
 	system("pause");
 }
 
-int Menu()
+int MainMenu()
 {
 	int choice;
 	system("title 学生成绩管理系统 by gaogao_qwq");
@@ -24,28 +24,219 @@ int Menu()
 	printf("\t\t\t******************************************************************************\n");
 	printf("\t\t\t*                               主菜单                                       *\n");
 	printf("\t\t\t*                1.  输入成绩                                                *\n");
-	printf("\t\t\t*                2.  计算每门课程的总分和平均分                              *\n");
-	printf("\t\t\t*                3.  计算每位学生的总分和平均分                              *\n");
-	printf("\t\t\t*                4.  按每个学生的总分由高到低排出名次表                      *\n");
-	printf("\t\t\t*                5.  按每个学生的总分由低到高排出名次表                      *\n");
-	printf("\t\t\t*                6.  按学号由小到大排出成绩表                                *\n");
-	printf("\t\t\t*                7.  按姓名的字典顺序排出成绩表                              *\n");
-	printf("\t\t\t*                8.  按学号查询学生排名及其考试成绩                          *\n");
-	printf("\t\t\t*                9.  按姓名查询学生排名及其考试成绩                          *\n");
-	printf("\t\t\t*                10. 按科目及分数层比例输出                                  *\n");
-	printf("\t\t\t*                11. 打印成绩表                                              *\n");
-	printf("\t\t\t*                12. 将每个学生的纪录信息写入文件                            *\n");
-	printf("\t\t\t*                13. 从文件中读出每个学生的纪录信息并显示                    *\n");
+	printf("\t\t\t*                2.  编辑成绩表                                              *\n");
+	printf("\t\t\t*                3.  成绩表排序                                              *\n");
+	printf("\t\t\t*                4.  查询学生成绩                                            *\n");
+	printf("\t\t\t*                5.  打印成绩表                                              *\n");
+	printf("\t\t\t*                6.  导入成绩表                                              *\n");
+	printf("\t\t\t*                7.  导出成绩表                                              *\n");
 	printf("\t\t\t*                0.  退出程序                                                *\n");
 	printf("\t\t\t******************************************************************************\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
 	printf("\n");
 	printf("\t\t\t*****************请输入你的选择:");
 	scanf("%d", &choice);
 	return choice;
+}
 
+void EditMenu(STU *head, int stuNum, int courseNum)
+{
+	while (true)
+	{
+		int choice = 114514;
+		system("title 学生成绩管理系统 by gaogao_qwq");
+		printf("\n\n");
+		printf("\t\t\t                           学生成绩管理系统\n");
+		printf("\t\t\t******************************************************************************\n");
+		printf("\t\t\t*                               编辑成绩表                                   *\n");
+		printf("\t\t\t*                1.  编辑成绩                                                *\n");
+		printf("\t\t\t*                2.  插入成绩                                                *\n");
+		printf("\t\t\t*                3.  删除成绩                                                *\n");
+		printf("\t\t\t*                0.  返回上级                                                *\n");
+		printf("\t\t\t******************************************************************************\n");
+		printf("\n");
+		printf("\t\t\t*****************请输入你的选择:");
+		scanf("%d", &choice);
+		switch (choice)
+		{
+		case 1:
+			//编辑成绩
+			system("cls"); //清屏
+			break;
+		case 2:
+			//插入成绩
+			system("cls"); //清屏
+			break;
+		case 3:
+			//删除成绩
+			system("cls"); //清屏
+			break;
+		case 0:
+			//返回上级
+			system("cls"); //清屏
+			return;
+		default:
+			system("cls"); //清屏
+			printf("\n\n\n");
+			printf("\t\t\t******************************************************************************\n");
+			printf("\t\t\tInput error!\n");
+			printf("\t\t\t******************************************************************************\n");
+		}
+	}
+}
+
+void SortMenu(STU *head, int stuNum, int courseNum)
+{
+	while (true)
+	{
+		int choice = 114514;
+		system("title 学生成绩管理系统 by gaogao_qwq");
+		printf("\n\n");
+		printf("\t\t\t                           学生成绩管理系统\n");
+		printf("\t\t\t******************************************************************************\n");
+		printf("\t\t\t*                               成绩表排序                                   *\n");
+		printf("\t\t\t*                1.  按每个学生的总分降序排序                                *\n");
+		printf("\t\t\t*                2.  按每个学生的总分升序排序                                *\n");
+		printf("\t\t\t*                3.  按每个学生的学号升序排序                                *\n");
+		printf("\t\t\t*                4.  按每个学生的姓名的字典顺序排序                          *\n");
+		printf("\t\t\t*                0.  返回上级                                                *\n");
+		printf("\t\t\t******************************************************************************\n");
+		printf("\n");
+		printf("\t\t\t*****************请输入你的选择:");
+		scanf("%d", &choice);
+		switch (choice)
+		{
+		case 1:
+			//按每个学生的总分降序排序
+			printf("\n\n\n");
+			printf("\t\t\t按每个学生的总分降序排序:\n");
+			head = SortbyScoreDescending(head, stuNum);
+			Print(head, stuNum, courseNum);
+			break;
+		case 2:
+			//按每个学生的总分升序排序
+			printf("\n\n\n");
+			printf("\t\t\t按每个学生的总分升序排序:\n");
+			head = SortbyScoreAscending(head, stuNum);
+			Print(head, stuNum, courseNum);
+			break;
+		case 3:
+			//按每个学生的学号升序排序
+			printf("\n\n\n");
+			printf("\t\t\t按每个学生的学号升序排序:\n");
+			head = SortbyNum(head);
+			Print(head, stuNum, courseNum);
+			break;
+		case 4:
+			//按每个学生的姓名的字典顺序排序
+			printf("\n\n\n");
+			printf("\t\t\t按每个学生的姓名的字典顺序排序:\n");
+			head = SortbyName(head, stuNum);
+			Print(head, stuNum, courseNum);
+			break;
+		case 0:
+			//返回上级
+			system("cls"); //清屏
+			return;
+		default:
+			system("cls"); //清屏
+			printf("\n\n\n");
+			printf("\t\t\t******************************************************************************\n");
+			printf("\t\t\tInput error!\n");
+			printf("\t\t\t******************************************************************************\n");
+		}
+	}
+}
+
+void SearchMenu(STU *head, int stuNum, int courseNum)
+{
+	while (true)
+	{
+		int choice = 114514;
+		system("title 学生成绩管理系统 by gaogao_qwq");
+		printf("\n\n");
+		printf("\t\t\t                           学生成绩管理系统\n");
+		printf("\t\t\t******************************************************************************\n");
+		printf("\t\t\t*                               查询学生成绩                                 *\n");
+		printf("\t\t\t*                1.  按姓名查询                                              *\n");
+		printf("\t\t\t*                2.  按学号查询                                              *\n");
+		printf("\t\t\t*                0.  返回上级                                                *\n");
+		printf("\t\t\t******************************************************************************\n");
+		printf("\n");
+		printf("\t\t\t*****************请输入你的选择:");
+		scanf("%d", &choice);
+		switch (choice)
+		{
+		case 1:
+			//按姓名查询
+			printf("\n\n\n");
+			printf("\t\t\t******************************************************************************\n");
+			printf("\t\t\tInput the name you want to search:\n");
+			SearchbyName(head, stuNum, courseNum);
+			break;
+		case 2:
+			//按学号查询
+			printf("\n\n\n");
+			printf("\t\t\t******************************************************************************\n");
+			printf("\t\t\tInput the number you want to search:\n");
+			SearchbyNum(head, stuNum, courseNum);
+			break;
+		case 0:
+			//返回上级
+			system("cls"); //清屏
+			return;
+		default:
+			system("cls"); //清屏
+			printf("\n\n\n");
+			printf("\t\t\t******************************************************************************\n");
+			printf("\t\t\tInput error!\n");
+			printf("\t\t\t******************************************************************************\n");
+		}
+	}
+}
+
+void PrintMenu(STU *head, int stuNum, int courseNum)
+{
+	while (true)
+	{
+		int choice = 114514;
+		system("title 学生成绩管理系统 by gaogao_qwq");
+		printf("\n\n");
+		printf("\t\t\t                           学生成绩管理系统\n");
+		printf("\t\t\t******************************************************************************\n");
+		printf("\t\t\t*                               查询学生成绩                                 *\n");
+		printf("\t\t\t*                1.  打印成绩表                                              *\n");
+		printf("\t\t\t*                2.  打印各分数段占比                                        *\n");
+		printf("\t\t\t*                0.  返回上级                                                *\n");
+		printf("\t\t\t******************************************************************************\n");
+		printf("\n");
+		printf("\t\t\t*****************请输入你的选择:");
+		scanf("%d", &choice);
+		switch (choice)
+		{
+		case 1:
+			//打印成绩表
+			system("cls"); //清屏
+			printf("\n\n\n");
+			Print(head, stuNum, courseNum);
+			break;
+		case 2:
+			//打印各分数段占比
+			system("cls"); //清屏
+			printf("\n\n\n");
+			StatisticAnalysis(head, stuNum, courseNum);
+			break;
+		case 0:
+			//返回上级
+			system("cls"); //清屏
+			return;
+		default:
+			system("cls"); //清屏
+			printf("\n\n\n");
+			printf("\t\t\t******************************************************************************\n");
+			printf("\t\t\tInput error!\n");
+			printf("\t\t\t******************************************************************************\n");
+		}
+	}
 }
 
 STU *Create(int stuNum, int courseNum) {
@@ -81,29 +272,23 @@ STU *Create(int stuNum, int courseNum) {
 void AverSumofEveryCourse(STU *head, int stuNum, int courseNum)
 {
 	STU *p;
-	int i, j = 1;
 	char ch;
 	float sum;
 	p = head;
 	if (head != NULL)
 	{
-		printf("\t\t\t******************************************************************************\n");
-		for (i = 0; i < courseNum; i++)
+		for (int i = 0; i < courseNum; i++)
 		{
 			p = head;
-			sum = 0.0;
-
+			sum = 0.f;
 			do
 			{
+				//累加该节点分数
 				sum += p->score[i];
+				//移到下一节点
 				p = p->next;
 			} while (p != NULL);
-			
-			printf("\t\t\tcourse %d:    sum=%.0f , aver=%.0f\n", j, sum, sum / stuNum);
-			j++;
 		}
-		printf("\t\t\t******************************************************************************\n");
-
 	}
 }
 
@@ -113,24 +298,19 @@ void AverSumofEveryStudent(STU *head, int stuNum, int courseNum)
 	p = head;
 	if (head != NULL)
 	{
-		printf("\n\n\n");
-		printf("\t\t\t******************************************************************************\n");
 		for (int i = 0; i < stuNum; i++)
 		{
 			//计算每位学生总成绩
-			p->sum = 0.0;
+			p->sum = 0.f;
 			for (int j = 0; j < courseNum; j++)
 			{
 				p->sum += p->score[j];
 			}
 			//计算每位学生平均成绩
 			p->aver = p->sum / courseNum;
-			//打印
-			printf("\t\t\tstudent %d:    sum=%.0f , aver=%.0f\n", p->num, p->sum, p->aver);
 			//移到下一节点
 			p = p->next;
 		}
-		printf("\t\t\t******************************************************************************\n");
 	}
 }
 
@@ -235,7 +415,7 @@ STU *SortbyName(STU *head, int stuNum)
 	STU *endpt;    //控制循环比较
 	STU *p;        //临时指针变量
 	STU *p1, *p2;
-
+	//动态分配
 	p1 = (STU *)malloc(LEN);
 	p1->next = head;            //注意理解：我们增加一个节点，放在第一个节点的前面，主要是为了便于比较。因为第一个节点没有前驱，我们不能交换地址
 	head = p1;                  //让head指向p1节点，排序完成后，我们再把p1节点释放掉
@@ -249,8 +429,8 @@ STU *SortbyName(STU *head, int stuNum)
 				p2 = p1->next->next;
 				p1->next->next = p2->next;
 				p2->next = p1->next;
-				p1->next = p2;        //结合第4点理解
-				p = p1->next->next;   //结合第6点理解
+				p1->next = p2;
+				p = p1->next->next;
 			}
 		}
 	}
@@ -271,6 +451,8 @@ void Print(STU *head, int stuNum, int courseNum)
 	if (head != NULL)        //只要不是空链表，就输出链表中所有节点
 	{
 		printf("\t\t\t******************************************************************************\n");
+		printf("\t\t      %8s%12s%10s%10s%10s%10s%10s%10s%10s%11s\n",
+			   "学号", "姓名", "科目1", "科目2", "科目3", "科目4", "科目5", "科目6", "总分", "平均分");
 		do
 		{
 
@@ -494,7 +676,6 @@ printf("\t\t\t******************************************************************
 }
 */
 
-//这里直接生成了一个新的链表Create_，确保可以直接读取存好的数据
 STU *Create_(int n, int m)
 {
 	STU *head;
@@ -542,16 +723,12 @@ STU *ReadfromFile(STU *head, int *stuNum, int *courseNum)
 			fscanf(fp, "%12f", &p->score[j]);
 		}
 		fscanf(fp, "%12f%12f", &p->sum, &p->aver);
-
+		//移至下一节点
 		p = p->next;
-
 	}
-	i = *stuNum;
-	j = *courseNum;
 	printf("\t\t\t导入成功!\n");
 	fclose(fp);
-
-	Print(head, i, j);
-
+	//打印导入的成绩表
+	Print(head, *stuNum, *courseNum);
 	return head;
 }
