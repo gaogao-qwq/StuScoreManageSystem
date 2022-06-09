@@ -5,9 +5,9 @@ int main()
 	int stuNum, courseNum;
 	int choice;
 	STU *head;  //定义头节点
-	head = (STU *)malloc(LEN);
+	head = (STU *)malloc(LEN); //内存分配
 
-	Welcome();
+	//Welcome();
 	
 	while (true)
 	{
@@ -18,29 +18,23 @@ int main()
 			system("cls");  //清屏
 			printf("\t\t\t******************************************************************************\n");
 
-			//输入学生数
-			printf("\t\t\tInput student number(n<30):\n");
-			printf("\t\t\t");
-			scanf("%d", &stuNum);
-
-			//输入学科数
-			printf("\t\t\tInput course number(m<=6):\n");
-			printf("\t\t\t");
-			scanf("%d", &courseNum);
+			//初始化学生数和科目数函数
+			InitInput(&stuNum, &courseNum);
 
 			//输入学生学号、姓名、分数
 			printf("\t\t\tInput student's ID, name and score:\n");
 			head = Create(stuNum, courseNum);
 
 			//计算每名学生和每个学科成绩的总和及平均分
-			AverSumofEveryCourse(head, stuNum, courseNum);
+			AverSumofEveryCourse(head, courseNum);
 			AverSumofEveryStudent(head, stuNum, courseNum);
 
 			system("cls");  //清屏
+			Print(head, stuNum, courseNum);
 			break;
 		case 2:
 			system("cls");  //清屏
-			EditMenu(head, stuNum, courseNum);
+			EditMenu(head, &stuNum, courseNum);
 			break;
 		case 3:
 			system("cls");  //清屏

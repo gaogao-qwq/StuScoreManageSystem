@@ -3,6 +3,8 @@
     "files.associations": {
         "malloc.h": "c",
         "stuscoremanagesystem.h": "c",
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "windows.h": "c",
+        "stdbool.h": "c"
     }
 }
