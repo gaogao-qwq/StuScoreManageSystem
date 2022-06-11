@@ -38,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -Wall -fexec-charset=GBK -g"
+					"fragment" : "-g"
 				}
 			],
 			"language" : "C",
@@ -55,7 +55,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-Wall -fexec-charset=GBK -g",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{

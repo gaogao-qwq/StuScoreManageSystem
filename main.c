@@ -34,11 +34,11 @@ int main()
 			break;
 		case 2:
 			system("cls");  //清屏
-			EditMenu(head, &stuNum, courseNum);
+			head = EditMenu(head, &stuNum, courseNum);
 			break;
 		case 3:
 			system("cls");  //清屏
-			SortMenu(head, stuNum, courseNum);
+			head = SortMenu(head, stuNum, courseNum);
 			break;
 		case 4:
 			system("cls");  //清屏

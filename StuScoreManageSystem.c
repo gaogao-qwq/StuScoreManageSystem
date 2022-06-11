@@ -51,7 +51,7 @@ int MainMenu()
 	return choice;
 }
 
-void EditMenu(STU *head, int *stuNum, int courseNum)
+STU *EditMenu(STU *head, int *stuNum, int courseNum)
 {
 	while (true)
 	{
@@ -93,13 +93,13 @@ void EditMenu(STU *head, int *stuNum, int courseNum)
 			//删除成绩
 			system("cls"); //清屏
 			Print(head, *stuNum, courseNum);
-			head = DeleteScore(head, stuNum);
+			head = DeleteScore(head, stuNum);//注意理解：这里传入的是stuNum的地址，因为删除后stuNum也需要自减1
 			Print(head, *stuNum, courseNum);
 			break;
 		case 0:
 			//返回上级
 			system("cls"); //清屏
-			return;
+			return head;
 		default:
 			system("cls"); //清屏
 			printf("\n\n\n");
@@ -118,6 +118,11 @@ STU *EditScore(STU *head, int stuNum, int courseNum)
 	bool isNull = true;
 	printf("\t\t\t输入要编辑数据行号:");
 	scanf("%d", &rowNum);
+	if(rowNum < 1)
+	{
+		printf("\t\t\t行号不存在!\n");
+		return head;
+	}
 	if (head != NULL && rowNum <= stuNum)
 	{
 		for (int i = 1; i < rowNum; i++) //遍历至对应行号对应的节点
@@ -167,7 +172,6 @@ STU *InsertScore(STU *head, int *stuNum, int courseNum)
 			temp = head; //头节点赋给temp
 			head = p1; //直接把插入节点p1赋给头节点
 			head->next = temp; //头节点指针域指向temp
-			free(p1); //释放插入节点p1
 			(*stuNum)++; //因为插入了一个新的节点，stuNum解引用需要自增1
 			isNull = false;
 			return (head);
@@ -230,11 +234,15 @@ STU *DeleteScore(STU *head, int *stuNum)
 	bool isNull = true;
 	printf("\t\t\t输入要删除数据行号:");
 	scanf("%d", &rowNum);
+	if(rowNum < 1)
+	{
+		printf("\t\t\t行号不存在!\n");
+		return head;
+	}
 	if(head != NULL && rowNum == 1) //对于删除头节点
 	{
 		temp = head; //头节点赋给temp
 		head = head->next; //直接将头结点移至后节点
-		free(temp); //释放行号对应节点
 		(*stuNum)--; //因为删除了一个节点，stuNum解引用需要自减1
 		isNull = false;
 	}
@@ -269,7 +277,7 @@ STU *DeleteScore(STU *head, int *stuNum)
 	return (head);
 }
 
-void SortMenu(STU *head, int stuNum, int courseNum)
+STU *SortMenu(STU *head, int stuNum, int courseNum)
 {
 	while (true)
 	{
@@ -324,7 +332,7 @@ void SortMenu(STU *head, int stuNum, int courseNum)
 		case 0:
 			//返回上级
 			system("cls"); //清屏
-			return;
+			return head;
 		default:
 			system("cls"); //清屏
 			printf("\n\n\n");
@@ -387,7 +395,7 @@ void PrintMenu(STU *head, int stuNum, int courseNum)
 		printf("\n\n");
 		printf("\t\t\t                           学生成绩管理系统\n");
 		printf("\t\t\t******************************************************************************\n");
-		printf("\t\t\t*                               查询学生成绩                                 *\n");
+		printf("\t\t\t*                               打印学生成绩                                 *\n");
 		printf("\t\t\t*                1.  打印成绩表                                              *\n");
 		printf("\t\t\t*                2.  打印各分数段占比                                        *\n");
 		printf("\t\t\t*                0.  返回上级                                                *\n");
@@ -454,10 +462,8 @@ STU *Create(int stuNum, int courseNum) {
 
 void AverSumofEveryCourse(STU *head, int courseNum)
 {
-	STU *p;
-	char ch;
+	STU *p = head;
 	float sum;
-	p = head;
 	if (head != NULL)
 	{
 		for (int i = 0; i < courseNum; i++)
@@ -477,8 +483,7 @@ void AverSumofEveryCourse(STU *head, int courseNum)
 
 void AverSumofEveryStudent(STU *head, int stuNum, int courseNum)
 {
-	STU *p;
-	p = head;
+	STU *p = head;
 	if (head != NULL)
 	{
 		for (int i = 0; i < stuNum; i++)
@@ -521,12 +526,9 @@ STU *SortbyScoreDescending(STU *head, int stuNum)
 			}
 		}
 	}
-
 	p1 = head;              //把p1的信息去掉
 	head = head->next;      //让head指向排序后的第一个节点
-	free(p1);          		//释放p1
 	p1 = NULL;          	//p1置为NULL，保证不产生“野指针”，即地址不确定的指针变量
-
 	return head;
 }
 
@@ -554,12 +556,9 @@ STU *SortbyScoreAscending(STU *head, int stuNum)
 			}
 		}
 	}
-
 	p1 = head;              //把p1的信息去掉
 	head = head->next;       //让head指向排序后的第一个节点
-	free(p1);          //释放p1
 	p1 = NULL;          //p1置为NULL，保证不产生“野指针”，即地址不确定的指针变量
-
 	return head;
 }
 
@@ -616,13 +615,10 @@ STU *SortbyName(STU *head, int stuNum)
 			}
 		}
 	}
-
 	p1 = head;              //把p1的信息去掉
 	head = head->next;      //让head指向排序后的第一个节点
-	free(p1);               //释放p1
 	p1 = NULL;              //p1置空，防止产生野指针
-
-	return head;
+	return (head);
 }
 
 void Print(STU *head, int stuNum, int courseNum)

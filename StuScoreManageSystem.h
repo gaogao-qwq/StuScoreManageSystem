@@ -36,7 +36,7 @@ void InitInput(int *stuNum, int *courseNum);
 
 
 //编辑成绩表二级菜单函数
-void EditMenu(STU *head, int *stuNum, int courseNum);
+STU *EditMenu(STU *head, int *stuNum, int courseNum);
 
 	//编辑成绩函数
 	STU *EditScore(STU *head , int stuNum, int courseNum);
@@ -49,7 +49,7 @@ void EditMenu(STU *head, int *stuNum, int courseNum);
 
 
 //成绩表排序二级菜单函数
-void SortMenu(STU *head, int stuNum, int courseNum);
+STU *SortMenu(STU *head, int stuNum, int courseNum);
 
 	//按每个学生的总分由高到低排出名次表函数
 	STU *SortbyScoreDescending(STU *head, int stuNum);
