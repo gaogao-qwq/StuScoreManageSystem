@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include <malloc.h>
 #include <stdlib.h>
 #include <windows.h>
 #include <stdbool.h>
@@ -12,7 +11,7 @@
 #define MAX_LEN 12                	     //姓名字符串最大长度
 #define STU_NUM 30                       //最多的学生人数
 #define COURSE_NUM 6                     //最多的科目数
-#define LEN sizeof(struct Student)		 //方便动态分配
+#define LEN sizeof(struct Student)		 //方便内存分配
 
 /*其实用双链表更方便,但我懒得重构代码了*/
 typedef struct Student

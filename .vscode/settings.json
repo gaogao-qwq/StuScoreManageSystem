@@ -1,10 +1,3 @@
 {
-    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "files.associations": {
-        "malloc.h": "c",
-        "stuscoremanagesystem.h": "c",
-        "*.tcc": "c",
-        "windows.h": "c",
-        "stdbool.h": "c"
-    }
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }

@@ -2,9 +2,9 @@
 
 int main()
 {
-	int stuNum, courseNum;
-	int choice;
-	STU *head;  //定义头节点
+	int stuNum = 0, courseNum = 0;
+	int choice = -1;
+	STU *head = NULL;  //定义头节点
 	head = (STU *)malloc(LEN); //内存分配
 
 	//Welcome();

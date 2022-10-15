@@ -507,11 +507,9 @@ STU *SortbyScoreDescending(STU *head, int stuNum)
 	STU *endpt;    //控制循环比较
 	STU *p;        //临时指针变量
 	STU *p1, *p2;
-
 	p1 = (STU *)malloc(LEN);
 	p1->next = head;		   //增加一个节点，放在第一个节点的前面，主要是为了便于比较。因为第一个节点没有前驱，我们不能交换地址
 	head = p1;                 //让head指向p1节点，排序完成后，我们再把p1节点释放掉
-
 	for (endpt = NULL; endpt != head; endpt = p)
 	{
 		for (p = p1 = head; p1->next->next != endpt; p1 = p1->next)
@@ -537,11 +535,9 @@ STU *SortbyScoreAscending(STU *head, int stuNum)
 	STU *endpt;    //控制循环比较
 	STU *p;        //临时指针变量
 	STU *p1, *p2;
-
 	p1 = (STU *)malloc(LEN);
 	p1->next = head;        //注意理解：我们增加一个节点，放在第一个节点的前面，主要是为了便于比较。因为第一个节点没有前驱，我们不能交换地址
 	head = p1;                 //让head指向p1节点，排序完成后，我们再把p1节点释放掉
-
 	for (endpt = NULL; endpt != head; endpt = p)
 	{
 		for (p = p1 = head; p1->next->next != endpt; p1 = p1->next)
@@ -567,17 +563,13 @@ STU *SortbyNum(STU *head)
 	STU *first;    //为原链表剩下用于直接插入排序的节点头指针
 	STU *t;        //临时指针变量：插入节点
 	STU *p, *q;     //临时指针变量
-
 	first = head->next;      //原链表剩下用于直接插入排序的节点链表
 	head->next = NULL;       //只含有一个节点的链表的有序链表
-
 	while (first != NULL)        //遍历剩下无序的链表
 	{
 		//注意：这里for语句就是体现直接插入排序思想的地方
 		for (t = first, q = head; ((q != NULL) && (q->num < t->num)); p = q, q = q->next);  //无序节点在有序链表中找插入的位置
-
 		first = first->next; //无序链表中的节点离开，以便它插入到有序链表中
-
 		if (q == head)      //插在第一个节点之前
 		{
 			head = t;
@@ -600,7 +592,6 @@ STU *SortbyName(STU *head, int stuNum)
 	p1 = (STU *)malloc(LEN); //内存分配
 	p1->next = head;            //注意理解：我们增加一个节点，放在第一个节点的前面，主要是为了便于比较。因为第一个节点没有前驱，我们不能交换地址
 	head = p1;                  //让head指向p1节点，排序完成后，我们再把p1节点释放掉
-
 	for (endpt = NULL; endpt != head; endpt = p)
 	{
 		for (p = p1 = head; p1->next->next != endpt; p1 = p1->next)
@@ -891,14 +882,12 @@ STU *ReadfromFile(STU *head, int *stuNum, int *courseNum)
 	STU *p;
 	FILE *fp;
 	int i, j;
-
 	//读失败则提前返回值
 	if ((fp = fopen("student.txt", "r")) == NULL)
 	{
 		printf("\t\t\t找不到或无法打开student.txt\n");
 		return NULL;
 	}
-
 	fscanf(fp, "%d\t%d\n", stuNum, courseNum);
 	head = Create_(*stuNum, *courseNum); //创建了一个空链表，并且赋给head
 	p = head;
