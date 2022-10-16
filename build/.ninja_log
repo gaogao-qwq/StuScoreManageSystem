@@ -1,7 +1,0 @@
-# ninja log v5
-3	764	6764878974173268	CMakeFiles/StuScoreManageSystem.dir/main.c.obj	e1908714b34deed6
-3	771	6764885044853135	CMakeFiles/StuScoreManageSystem.dir/StuScoreManageSystem.c.obj	18bc8242d911ae94
-772	1018	6764885047280237	StuScoreManageSystem.exe	3f211faa12ef8e30
-3	894	6765596405924348	CMakeFiles/StuScoreManageSystem.dir/main.c.obj	546e155ad7fe7191
-23	923	6765596406217646	CMakeFiles/StuScoreManageSystem.dir/StuScoreManageSystem.c.obj	98ea0c4f1aea37c8
-923	1202	6765596408974539	StuScoreManageSystem.exe	39c94c5cb61ffa55
