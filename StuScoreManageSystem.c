@@ -140,6 +140,7 @@ STU *EditScore(STU *head, int stuNum, int courseNum)
 	{
 		printf("\t\t\t行号不存在!\n");
 	}
+	return (head);
 }
 
 STU *InsertScore(STU *head, int *stuNum, int courseNum)
@@ -224,6 +225,7 @@ STU *InsertScore(STU *head, int *stuNum, int courseNum)
 	{
 		printf("\t\t\t行号不存在!\n");
 	}
+	return (head);
 }
 
 STU *DeleteScore(STU *head, int *stuNum)
@@ -894,7 +896,7 @@ STU *ReadfromFile(STU *head, int *stuNum, int *courseNum)
 	for (i = 0; i < *stuNum; i++)
 	{
 		fscanf(fp, "%12ld", &p->num);
-		fscanf(fp, "%12s", &p->name);
+		fscanf(fp, "%12s", p->name);
 		for (j = 0; j < *courseNum; j++)
 		{
 			fscanf(fp, "%12f", &p->score[j]);
